@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Blago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar bg-body-tertiary even-row-color">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/blago-logo.jpg" width="30" height="30">
+            Blago
+        </a>
+    </div>
+</nav>
+<div class="card mx-auto" style="width: 65rem;">
+    <div class="card-header text-center">
+        Список посад
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Назва посади</th>
+            <th scope="col">Категорія посади</th>
+            <th scope="col">Рівень персоналу</th>
+            <th scope="col">Операції</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="jobPosition: ${jobPositions}" th:if="${jobPosition != null}">
+            <td th:text="${jobPosition.positionName}"></td>
+            <td th:text="${jobPosition.jobCategoryName}"></td>
+            <td th:text="${jobPosition.employmentLevelName}"></td>
+            <td>
+                <a class="ui-button text-primary-emphasis" th:href="@{/job-position-profile(id=${jobPosition.id})}" >Змінити</a>
+
+                <a class="ui-button text-danger-emphasis" th:href="@{/delete-job-position(id=${jobPosition.id})}">Видалити</a>
+        </tr>
+        </tbody>
+</table>
+</div>
+</body>
+</html>

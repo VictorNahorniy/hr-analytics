@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org "
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar bg-body-tertiary even-row-color">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/blago-logo.jpg" width="30" height="30">
+            Blago
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="card w-50 mx-auto my-5 d-flex justify-content-center " style="width: 25rem">
+        <div class="card-header text-center">Додавання підрозділу</div>
+        <div class="card-body">
+            <div class="form-group">
+                <form action="/save-department" th:object="${employeeDepartment}" method="post">
+                    <label for="name">Назва:</label><br>
+                    <input type="text" th:field="*{departmentName}" class="form-control" id="name" name="name">
+
+                    <div class="text-center mx-auto">
+                        <button type="submit" class="btn btn-primary">Додати</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mx-auto" style="width: 25rem;">
+    <div class="card-header text-center">
+        Список підрозділів
+    </div>
+    <div class="list-group" th:each="department: ${departments}" th:if="${departments.size() != null}">
+        <a th:href="@{/department-profile(id=${department.employeeDepartmentId})}"
+           class="list-group-item list-group-item-action  d-flex justify-content-center"
+           th:text="${department.departmentName}"></a>
+    </div>
+    <div class="list-group" th:if="${departments.size() == 0}">
+        <a class="list-group-item list-group-item-action  d-flex justify-content-center">
+            Відсутні
+        </a>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
