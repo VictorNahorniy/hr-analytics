@@ -49,4 +49,8 @@ public class EmployeeDepartmentService {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+
+    public String getNameById(Integer employeeDepartmentId) {
+        return repository.findEmployeeDepartmentNameById(employeeDepartmentId);
+    }
 }

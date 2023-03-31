@@ -39,7 +39,6 @@
             <td th:text="${jobPosition.employmentLevelName}"></td>
             <td>
                 <a class="ui-button text-primary-emphasis" th:href="@{/job-position-profile(id=${jobPosition.id})}" >Змінити</a>
-
                 <a class="ui-button text-danger-emphasis" th:href="@{/delete-job-position(id=${jobPosition.id})}">Видалити</a>
         </tr>
         </tbody>

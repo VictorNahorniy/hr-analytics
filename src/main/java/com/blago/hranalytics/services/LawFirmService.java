@@ -28,4 +28,8 @@ public class LawFirmService {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+
+    public String getNameById(Integer lawFirmId) {
+        return repository.findLawFirmNameById(lawFirmId);
+    }
 }

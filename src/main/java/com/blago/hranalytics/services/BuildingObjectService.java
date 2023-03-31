@@ -29,4 +29,7 @@ public class BuildingObjectService {
         repository.deleteById(id);
     }
 
+    public String getNameById(Integer objectId) {
+        return repository.findBuildingObjectNameById(objectId);
+    }
 }

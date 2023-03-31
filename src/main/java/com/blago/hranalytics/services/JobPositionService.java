@@ -1,7 +1,7 @@
 package com.blago.hranalytics.services;
 
-import com.blago.hranalytics.dto.JobPositionDTO;
 import com.blago.hranalytics.models.JobPosition;
+import com.blago.hranalytics.models.dto.JobPositionDTO;
 import com.blago.hranalytics.repositories.JobPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class JobPositionService {
         return false;
     }
 
-    public List<JobPositionDTO> findAll() {
+    public List<JobPositionDTO> getAllDTO() {
         List<JobPositionDTO> jobPositionDTOList = new ArrayList<>();
         for (JobPosition jobPosition : jobPositionRepository.findAll()) {
             jobPositionDTOList.add(new JobPositionDTO(
@@ -47,6 +47,13 @@ public class JobPositionService {
                     employmentLevelService.findById(jobPosition.getEmploymentLevelId()).getLevelName()));
         }
         return jobPositionDTOList;
+    }
+
+    public List<JobPosition> getAll() {
+        return jobPositionRepository.findAll();
+    }
+    public String getNameById(Integer id){
+        return jobPositionRepository.findJobPositionNameById(id);
     }
 
     public Optional<JobPosition> findById(Integer id) {

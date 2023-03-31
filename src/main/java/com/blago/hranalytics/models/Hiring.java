@@ -142,4 +142,21 @@ public class Hiring {
     public int hashCode() {
         return Objects.hash(hiringId, hiringDate, wage, pbi, employeeId, jobPositionId, employeeDepartmentId, objectId, lawFirmId, employmentTypeId, hiringTypeId);
     }
+
+    @Override
+    public String toString() {
+        return "Hiring{" +
+                "hiringId=" + hiringId +
+                ", hiringDate=" + hiringDate +
+                ", wage=" + wage +
+                ", pbi=" + pbi +
+                ", employeeId=" + employeeId +
+                ", jobPositionId=" + jobPositionId +
+                ", employeeDepartmentId=" + employeeDepartmentId +
+                ", objectId=" + objectId +
+                ", lawFirmId=" + lawFirmId +
+                ", employmentTypeId=" + employmentTypeId +
+                ", hiringTypeId=" + hiringTypeId +
+                '}';
+    }
 }

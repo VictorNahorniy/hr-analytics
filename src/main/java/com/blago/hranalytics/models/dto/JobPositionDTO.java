@@ -1,4 +1,4 @@
-package com.blago.hranalytics.dto;
+package com.blago.hranalytics.models.dto;
 
 import com.blago.hranalytics.models.EmploymentLevel;
 import com.blago.hranalytics.models.JobCategory;

@@ -44,7 +44,7 @@ public class JobPositionController {
     @GetMapping("/job-positions")
     public ModelAndView jobPositions() {
         return new ModelAndView("job-position/job-position-list")
-                .addObject("jobPositions", jobPositionService.findAll());
+                .addObject("jobPositions", jobPositionService.getAllDTO());
     }
 
     @GetMapping("/job-position-profile")
