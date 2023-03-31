@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Blago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar bg-body-tertiary even-row-color">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/blago-logo.jpg" width="30" height="30">
+            Blago
+        </a>
+        <div class="d-flex justify-content-center">
+            <h3>Список прийняттів</h3>
+        </div>
+    </div>
+</nav>
+<div class="container mx-auto">
+<!--    <div class="card-header text-center">
+        Список прийняттів
+    </div>-->
+    <div class="row ">
+        <div class="card-group" style="width: 22rem; height: 28rem" th:each="hiring : ${hiringList}"
+             th:if="${hiring != null}">
+            <div class="card">
+                <div class="card-body text-lg-left">
+                    <ul class="list-group list-group-flush">
+                        <h5 class="card-title" th:text="${hiring.employeeFullName}"></h5>
+                        <li class="list-group-item">
+                            <b class="fw-semibold">Посада:</b>
+                            <a th:text="${hiring.jobPositionName}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Підрозділ:</b>
+                            <a th:text="${hiring.employeeDepartmentName}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Об'єкт:</b>
+                            <a  th:text="${hiring.objectName}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Тип Працевлаштування:</b>
+                            <a th:text="${hiring.employmentTypeName}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Ставка:</b>
+                            <a th:text="${hiring.wage}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">PBI:</b>
+                            <a th:text="${hiring.pbi}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Дата прийняття:</b>
+                            <a th:text="${hiring.hiringDate}"></a>
+                        </li>
+                        <br/>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <a class="card-link align-content-center text-primary-emphasis">
+                                Редаувати
+                            </a>
+                            <a class="card-link text-danger-emphasis">Видалити</a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!--
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">ПІБ</th>
+        <th scope="col">Посада</th>
+        <th scope="col">Підрозділ</th>
+        <th scope="col">Об'єкт</th>
+        <th scope="col">Юр. компанія</th>
+        <th scope="col">Тип працевлаштування</th>
+        <th scope="col">Ставка</th>
+        <th scope="col">PBI</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Операції</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hiring : ${hiringList}" th:if="${hiring != null}">
+        <td th:text="${hiring.employeeFullName}"></td>
+        <td th:text="${hiring.jobPositionName}"></td>
+        <td th:text="${hiring.employeeDepartmentName}"></td>
+        <td th:text="${hiring.objectName}"></td>
+        <td th:text="${hiring.objectName}"></td>
+        <td th:text="${hiring.employmentTypeName}"></td>
+        <td th:text="${hiring.wage}"></td>
+        <td th:text="${hiring.pbi}"></td>
+        <td th:text="${hiring.hiringDate}"></td>
+        <td>
+            <a class="ui-button text-primary-emphasis">Змінити</a>
+            <a class="ui-button text-danger-emphasis">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>-->
