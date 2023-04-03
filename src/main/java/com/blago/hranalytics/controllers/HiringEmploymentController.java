@@ -62,7 +62,7 @@ public class HiringEmploymentController {
 
     @GetMapping("/delete-hiring")
     ModelAndView deleteHiring(@RequestParam Integer hiringId) {
-        hiringService.delete(hiringId);
+        hiringService.deleteById(hiringId);
         return new ModelAndView("redirect:/hiring-list");
     }
 

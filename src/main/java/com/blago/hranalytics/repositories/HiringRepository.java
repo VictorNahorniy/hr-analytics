@@ -21,4 +21,5 @@ public interface HiringRepository extends JpaRepository<Hiring, Integer> {
     List<Hiring> findHiringByHiringTypeId(Integer id);
 
     boolean existsHiringByEmployeeId(Integer id);
+    boolean existsByPreviousHiringId(Integer id);
 }

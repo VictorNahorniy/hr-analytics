@@ -93,8 +93,10 @@
                  th:href="@{/edit-hiring(hiringId=${hiring.id})}">
                 Редагувати
               </a>
-              <a class="card-link text-danger"
-                 th:href="@{/delete-hiring(hiringId=${hiring.id})}">Видалити</a>
+              <form th:action="@{/delete-transfer(id=${hiring.id})}" th:method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <input type="submit" class="card-link text-danger" value="Видалити"/>
+              </form>
             </div>
           </ul>
         </div>

@@ -8,15 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @Slf4j
 @Service
@@ -68,7 +64,7 @@ public class HiringService {
         return hiringRepository.existsHiringByEmployeeId(employeeId);
     }
 
-    public void delete(Integer hiringId) {
+    public void deleteById(Integer hiringId) {
         hiringRepository.deleteById(hiringId);
     }
 
@@ -143,5 +139,9 @@ public class HiringService {
             hiringTransferDTOList.add(parseHiringToHiringTransferDTO(hiring));
         }
         return hiringTransferDTOList;
+    }
+
+    public boolean isPreviousHiring(Integer id) {
+        return hiringRepository.existsByPreviousHiringId(id);
     }
 }

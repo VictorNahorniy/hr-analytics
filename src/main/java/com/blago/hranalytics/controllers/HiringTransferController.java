@@ -6,9 +6,7 @@ import com.blago.hranalytics.services.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
@@ -57,6 +55,15 @@ public class HiringTransferController {
     ModelAndView getTransferList() throws SQLException {
         return new ModelAndView("transfer/transfer-list")
                 .addObject("hiringList", hiringService.getAllTransfersDTO());
+    }
+
+    @PostMapping("/delete-transfer")
+    ModelAndView deleteTransfer(@RequestParam Integer id){
+        if(hiringService.isPreviousHiring(id)){
+            return new ModelAndView("transfer/error-deleting");
+        }
+        hiringService.deleteById(id);
+        return new ModelAndView("redirect:/transfer-list");
     }
 
     private ModelAndView getFilledHiring(ModelAndView modelAndView) {
