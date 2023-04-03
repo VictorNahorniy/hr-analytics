@@ -28,10 +28,10 @@
 </nav>
 <div class="container">
     <div class="card w-50 mx-auto my-5 d-flex justify-content-center " style="width: 25rem">
-        <div class="card-header text-center">Оформлення прийняття</div>
+        <div class="card-header text-center">Оформлення переведення</div>
         <div class="card-body">
             <div class="form-group">
-                <form action="/save-hiring" th:object="${hiring}" method="post">
+                <form action="/save-transfer" th:object="${transfer}" method="post">
                     <div class="form-floating">
                         <select class="form-control selectpicker" data-live-search="true" id="employeeChoice"
                                 th:field="*{employeeId}">

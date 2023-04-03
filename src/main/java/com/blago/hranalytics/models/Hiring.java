@@ -3,6 +3,7 @@ package com.blago.hranalytics.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -13,7 +14,7 @@ public class Hiring {
     private Integer hiringId;
     @Basic
     @Column(name = "hiring_date", nullable = true)
-    private Date hiringDate;
+    private Timestamp hiringDate;
     @Basic
     @Column(name = "wage", nullable = true, precision = 0)
     private Double wage;
@@ -42,6 +43,10 @@ public class Hiring {
     @Column(name = "hiring_type_id", nullable = true)
     private Integer hiringTypeId;
 
+    @Basic
+    @Column(name = "previous_hiring_id", nullable = true)
+    private Integer previousHiringId;
+
     public Integer getHiringId() {
         return hiringId;
     }
@@ -50,11 +55,11 @@ public class Hiring {
         this.hiringId = hiringId;
     }
 
-    public Date getHiringDate() {
+    public Timestamp getHiringDate() {
         return hiringDate;
     }
 
-    public void setHiringDate(Date hiringDate) {
+    public void setHiringDate(Timestamp hiringDate) {
         this.hiringDate = hiringDate;
     }
 
@@ -128,6 +133,14 @@ public class Hiring {
 
     public void setHiringTypeId(Integer hiringTypeId) {
         this.hiringTypeId = hiringTypeId;
+    }
+
+    public Integer getPreviousHiringId() {
+        return previousHiringId;
+    }
+
+    public void setPreviousHiringId(Integer previousHiringId) {
+        this.previousHiringId = previousHiringId;
     }
 
     @Override

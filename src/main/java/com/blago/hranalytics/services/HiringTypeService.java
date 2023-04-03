@@ -23,4 +23,8 @@ public class HiringTypeService {
         }
         throw new SQLException("Hiring type not found");
     }
+
+    public String getNameById(Integer hiringTypeId) {
+        return hiringTypeRepository.findById(hiringTypeId).get().getNameType();
+    }
 }

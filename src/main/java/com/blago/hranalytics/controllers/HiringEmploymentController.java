@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 @Controller
 @Slf4j
-public class HiringController {
+public class HiringEmploymentController {
     private static final String hiringTypeName = "Прийняття";
     @Autowired
     private HiringService hiringService;
@@ -46,18 +46,18 @@ public class HiringController {
     }
 
     @PostMapping("/save-hiring")
-    ModelAndView saveHiring(@ModelAttribute Hiring hiring) {
+    ModelAndView saveHiring(@ModelAttribute Hiring hiring) throws SQLException {
         if (hiringService.isEmployeeHired(hiring.getEmployeeId())) {
             return new ModelAndView("hiring/create-form-error");
         }
-        hiringService.save(hiring);
+        hiringService.saveEmployment(hiring);
         return new ModelAndView("redirect:/hiring-list");
     }
 
     @GetMapping("/hiring-list")
-    ModelAndView getHiringList() {
+    ModelAndView getHiringList() throws SQLException {
         return new ModelAndView("hiring/list")
-                .addObject("hiringList", hiringService.getAllDTO());
+                .addObject("hiringList", hiringService.getAllEmploymentsDTO());
     }
 
     @GetMapping("/delete-hiring")

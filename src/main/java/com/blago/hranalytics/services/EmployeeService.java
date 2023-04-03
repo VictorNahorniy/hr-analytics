@@ -14,7 +14,9 @@ public class EmployeeService {
     private EmployeeRepository repository;
 
     public boolean save(Employee employee) {
-        List<Employee> employees = repository.findEmployeesByFirstNameAndLastNameAndPatronymic(employee.getFirstName(), employee.getLastName(), employee.getPatronymic());
+        List<Employee> employees = repository.findEmployeesByFirstNameAndLastNameAndPatronymic(employee.getFirstName(),
+                employee.getLastName(),
+                employee.getPatronymic());
         if (employees.size() == 0) {
             repository.save(employee);
             return true;
@@ -50,5 +52,9 @@ public class EmployeeService {
             return Optional.of(employee.getLastName() + " " + employee.getFirstName() + " " + employee.getPatronymic());
         }
         return Optional.empty();
+    }
+
+    public List<Employee> getHiredEmployees() {
+        return repository.findHiredEmployees();
     }
 }

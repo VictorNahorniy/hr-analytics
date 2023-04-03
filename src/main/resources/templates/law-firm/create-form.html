@@ -39,7 +39,7 @@
 </div>
 <div class="card mx-auto" style="width: 25rem;">
   <div class="card-header text-center">
-    Список підрозділів
+    Список юридичних компаній
   </div>
   <div class="list-group" th:each="lawFirm: ${lawFirms}" th:if="${lawFirms.size() != null}">
     <a th:href="@{/law-firm-profile(id=${lawFirm.lawFirmId})}"

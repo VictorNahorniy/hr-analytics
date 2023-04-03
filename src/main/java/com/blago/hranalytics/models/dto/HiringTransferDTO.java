@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
-public class HiringEmploymentDTO {
+public class HiringTransferDTO {
     private Integer id;
     private Float wage;
     private Float pbi;
@@ -20,4 +20,5 @@ public class HiringEmploymentDTO {
     private String lawFirmName;
     private String employmentTypeName;
     private Date hiringDate;
+    private HiringEmploymentDTO previousHiring;
 }
