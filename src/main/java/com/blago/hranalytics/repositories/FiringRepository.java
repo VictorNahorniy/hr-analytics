@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FiringRepository extends JpaRepository<Firing, Integer> {
+    boolean existsByEmployeeId(Integer employeeId);
 }

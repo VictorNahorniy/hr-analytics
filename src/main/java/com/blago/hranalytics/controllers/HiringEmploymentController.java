@@ -69,7 +69,7 @@ public class HiringEmploymentController {
     @GetMapping("/edit-hiring")
     ModelAndView editHiring(@RequestParam Integer hiringId) {
         if (hiringService.getHiringById(hiringId).isPresent()) {
-            ModelAndView modelAndView = new ModelAndView("hiring/edit-form")
+            ModelAndView modelAndView = new ModelAndView("transfer/edit-form")
                     .addObject("hiring", hiringService.getHiringById(hiringId).get());
             return getFilledHiring(modelAndView);
         }

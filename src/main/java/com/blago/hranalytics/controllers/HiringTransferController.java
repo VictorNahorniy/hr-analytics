@@ -66,6 +66,26 @@ public class HiringTransferController {
         return new ModelAndView("redirect:/transfer-list");
     }
 
+    @GetMapping("/edit-transfer")
+    ModelAndView getEditTransferForm(@RequestParam Integer hiringId){
+        if (hiringService.getHiringById(hiringId).isPresent()) {
+            ModelAndView modelAndView = new ModelAndView("hiring/edit-form")
+                    .addObject("hiring", hiringService.getHiringById(hiringId).get());
+            return getFilledHiring(modelAndView);
+        }
+        log.error("Hiring was not found by id");
+        return new ModelAndView("transfer/search-error");
+    }
+
+    @PostMapping("/update-transfer")
+    String updateHiring(@ModelAttribute Hiring hiring){
+        if (hiringService.exists(hiring)){
+            hiringService.update(hiring);
+            return "redirect:/edit-transfer?hiringId=" + hiring.getHiringId();
+        }
+        return "transfer/search-error";
+    }
+
     private ModelAndView getFilledHiring(ModelAndView modelAndView) {
         return modelAndView
                 .addObject("employees", employeeService.getHiredEmployees())

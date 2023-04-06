@@ -3,6 +3,7 @@ package com.blago.hranalytics.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -13,7 +14,7 @@ public class Child {
     private Integer childId;
     @Basic
     @Column(name = "birthday")
-    private Date birthday;
+    private Timestamp birthday;
     @Basic
     @Column(name = "employee_id")
     private Integer employeeId;
@@ -26,11 +27,11 @@ public class Child {
         this.childId = childId;
     }
 
-    public Date getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
 
