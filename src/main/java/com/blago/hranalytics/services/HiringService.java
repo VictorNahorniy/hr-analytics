@@ -46,7 +46,7 @@ public class HiringService {
                     + hiringTypeService.getNameById(hiring.getHiringTypeId()));
             return false;
         }
-        hiring.setHiringDate(new Timestamp(System.currentTimeMillis()));
+        //hiring.setHiringDate(new Timestamp(System.currentTimeMillis()));
         hiringRepository.save(hiring);
         return true;
     }
@@ -122,7 +122,7 @@ public class HiringService {
                     + hiringTypeService.getNameById(hiring.getHiringTypeId()));
             return false;
         }
-        hiring.setHiringDate(new Timestamp(System.currentTimeMillis()));
+        //hiring.setHiringDate(new Timestamp(System.currentTimeMillis()));
         hiring.setPreviousHiringId(getPreviousHiringId(hiring.getEmployeeId()));
         hiringRepository.save(hiring);
         return true;

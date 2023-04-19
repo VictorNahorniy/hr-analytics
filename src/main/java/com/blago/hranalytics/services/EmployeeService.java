@@ -24,8 +24,8 @@ public class EmployeeService {
         return false;
     }
 
-    public List<Employee> getAll() {
-        return repository.findAll();
+    public List<Employee> getUnhiredEmployees() {
+        return repository.findUnhiredEmployees();
     }
 
     public Optional<Employee> getById(Integer id) {
@@ -56,5 +56,13 @@ public class EmployeeService {
 
     public List<Employee> getHiredEmployees() {
         return repository.findHiredEmployees();
+    }
+
+    public List<Employee> getFirebleEmployees(){
+        return repository.findFireableEmployees();
+    }
+
+    public List<Employee> getAll() {
+        return repository.findAll();
     }
 }

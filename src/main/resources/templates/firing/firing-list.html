@@ -41,12 +41,13 @@
                         </li>
                         <br/>
                         <div class="mt-3 d-flex justify-content-between">
-                            <a class="card-link align-content-center text-primary-emphasis">
+                            <a class="card-link align-content-center text-primary-emphasis"
+                               th:href="@{/edit-firing(id=${firingDTO.firing.firingId})}">
                                 Редагувати
                             </a>
-                            <a class="card-link text-danger-emphasis">
-                                Видалити
-                            </a>
+                            <form th:action="@{/delete-firing(firingId=${firingDTO.firing.firingId})}" th:method="post">
+                                <input type="submit" class="card-link text-danger" value="Видалити"/>
+                            </form>
                         </div>
                     </ul>
                 </div>

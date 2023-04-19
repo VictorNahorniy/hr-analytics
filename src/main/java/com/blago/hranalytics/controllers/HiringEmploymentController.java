@@ -88,7 +88,7 @@ public class HiringEmploymentController {
 
     private ModelAndView getFilledHiring(ModelAndView modelAndView) {
         return modelAndView
-                .addObject("employees", employeeService.getAll())
+                .addObject("employees", employeeService.getUnhiredEmployees())
                 .addObject("jobPositions", jobPositionService.getAll())
                 .addObject("employeeDepartments", employeeDepartmentService.getAll())
                 .addObject("buildingObjects", buildingObjectService.getAll())

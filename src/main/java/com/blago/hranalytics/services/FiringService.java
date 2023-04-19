@@ -6,8 +6,8 @@ import com.blago.hranalytics.repositories.FiringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,5 +34,22 @@ public class FiringService {
                 employeeService.getFullNameById(firing.getEmployeeId()).get(),
                 firing
         );
+    }
+
+    public boolean delete(Integer firingId) {
+        Optional<Firing> firingOptional = firingRepository.findById(firingId);
+        if (firingOptional.isPresent()) {
+            firingRepository.deleteById(firingId);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean existById(Integer id){
+        return firingRepository.existsById(id);
+    }
+
+    public Optional<Firing> getEntityById(Integer id){
+        return firingRepository.findById(id);
     }
 }

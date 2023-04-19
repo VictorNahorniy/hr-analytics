@@ -14,7 +14,7 @@ public class Hiring {
     private Integer hiringId;
     @Basic
     @Column(name = "hiring_date", nullable = true)
-    private Timestamp hiringDate;
+    private Date hiringDate;
     @Basic
     @Column(name = "wage", nullable = true, precision = 0)
     private Double wage;
@@ -55,11 +55,11 @@ public class Hiring {
         this.hiringId = hiringId;
     }
 
-    public Timestamp getHiringDate() {
+    public Date getHiringDate() {
         return hiringDate;
     }
 
-    public void setHiringDate(Timestamp hiringDate) {
+    public void setHiringDate(Date hiringDate) {
         this.hiringDate = hiringDate;
     }
 

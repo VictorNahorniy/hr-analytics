@@ -15,8 +15,7 @@ public class Firing {
     private Integer firingId;
     @Basic
     @Column(name = "firing_date", nullable = true)
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private Timestamp firingDate;
+    private Date firingDate;
     @Basic
     @Column(name = "reason", nullable = true, length = 100)
     private String reason;
@@ -32,11 +31,11 @@ public class Firing {
         this.firingId = firingId;
     }
 
-    public Timestamp getFiringDate() {
+    public java.util.Date getFiringDate() {
         return firingDate;
     }
 
-    public void setFiringDate(Timestamp firingDate) {
+    public void setFiringDate(Date firingDate) {
         this.firingDate = firingDate;
     }
 

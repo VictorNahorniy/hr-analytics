@@ -14,7 +14,7 @@ public class Child {
     private Integer childId;
     @Basic
     @Column(name = "birthday")
-    private Timestamp birthday;
+    private Date birthday;
     @Basic
     @Column(name = "employee_id")
     private Integer employeeId;
@@ -27,11 +27,11 @@ public class Child {
         this.childId = childId;
     }
 
-    public Timestamp getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Timestamp birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

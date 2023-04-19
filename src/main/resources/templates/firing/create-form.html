@@ -49,9 +49,7 @@
                     </div>
                     <br/>
                     <label for="date">Дата звільнення:</label>
-                    <div class="form-floating">
-                        <input class="date" type="datetime-local" th:field="*{firingDate}" id="date">
-                    </div>
+                        <input type="date" class="form-control" th:field="*{firingDate}" id="date">
                     <br/>
                     <div class="text-center mx-auto">
                         <button type="submit" class="btn btn-primary">Оформити</button>
