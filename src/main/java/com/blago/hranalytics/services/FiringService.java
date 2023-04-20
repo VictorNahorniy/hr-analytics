@@ -52,4 +52,8 @@ public class FiringService {
     public Optional<Firing> getEntityById(Integer id){
         return firingRepository.findById(id);
     }
+
+    public void update(Firing firing) {
+        firingRepository.save(firing);
+    }
 }

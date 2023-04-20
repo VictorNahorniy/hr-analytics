@@ -61,7 +61,16 @@ public class FiringController {
         if(firingService.existById(id)){
             return new ModelAndView("firing/edit-firing")
                     .addObject("firing", firingService.getEntityById(id).get())
-                    .addObject("employees", employeeService.getFirebleEmployees());
+                    .addObject("employees", employeeService.getAll());
+        }
+        return new ModelAndView("firing/editing-error");
+    }
+
+    @PostMapping("/update-firing")
+    ModelAndView upgradeFiring(@ModelAttribute Firing firing){
+        if(firingService.existById(firing.getFiringId())){
+            firingService.update(firing);
+            return new ModelAndView("redirect:/edit-firing?id=" + firing.getFiringId());
         }
         return new ModelAndView("firing/editing-error");
     }

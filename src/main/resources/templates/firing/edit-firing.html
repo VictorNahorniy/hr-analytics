@@ -31,7 +31,8 @@
     <div class="card-header text-center">Редагування звільнення</div>
     <div class="card-body">
       <div class="form-group">
-        <form action="/save-firing" th:object="${firing}" method="post">
+        <form action="/update-firing" th:object="${firing}" method="post">
+          <input type="hidden" th:field="*{firingId}">
           <div class="form-floating">
             <select class="form-control selectpicker" data-live-search="true" id="employeeChoice"
                     th:field="*{employeeId}">

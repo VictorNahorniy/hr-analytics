@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +18,8 @@ import java.util.Optional;
 public class HiringService {
     private static final String EMPLOYMENT = "Прийняття";
     private static final String TRANSFER = "Переведення";
+    private static final Integer employmentHiringId = 1;
+    private static final Integer transferHiringId = 2;
     @Autowired
     private HiringRepository hiringRepository;
     @Autowired
@@ -89,8 +90,8 @@ public class HiringService {
                 hiring.getHiringDate()
         );
     }
-    
-    private HiringTransferDTO parseHiringToHiringTransferDTO(Hiring hiring){
+
+    private HiringTransferDTO parseHiringToHiringTransferDTO(Hiring hiring) {
         return new HiringTransferDTO(
                 hiring.getHiringId(),
                 hiring.getWage().floatValue(),
@@ -143,5 +144,15 @@ public class HiringService {
 
     public boolean isPreviousHiring(Integer id) {
         return hiringRepository.existsByPreviousHiringId(id);
+    }
+
+    public List<HiringTransferDTO> getTransfersDTOByEmployeeId(Integer employeeId) {
+        return hiringRepository
+                .findHiringsByEmployeeIdAndHiringTypeId(employeeId, transferHiringId).stream()
+                .map(this::parseHiringToHiringTransferDTO).toList();
+    }
+
+    public boolean existByEmployeeId(Integer employeeId) {
+        return hiringRepository.existsByEmployeeIdAndHiringTypeId(employeeId, transferHiringId);
     }
 }

@@ -20,41 +20,57 @@
         </a>
     </div>
 </nav>
-<div class="list-group">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Прізвище</th>
-            <th scope="col">Ім'я</th>
-            <th scope="col">По-батькові</th>
-            <th scope="col">ІПН</th>
-            <th scope="col">Дата народження</th>
-            <th scope="col">Стать</th>
-            <th scope="col">Прийняття</th>
-            <th scope="col">Звільнення</th>
-            <th scope="col">Дії</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="employee: ${employees}" th:if="${employee != null}">
-            <td th:text="${employee.employeeId}"></td>
-            <td th:text="${employee.lastName}"></td>
-            <td th:text="${employee.firstName}"></td>
-            <td th:text="${employee.patronymic}"></td>
-            <td th:text="${employee.idNumOfTaxpayer}"></td>
-            <td th:text="${employee.birthday}"></td>
-            <td th:text="${employee.isMale}==1?'Чоловік':'Жінка'"></td>
-            <td><a class="ui-button" href="#">Переглянути</a> </td>
-            <td><a class="ui-button" href="#">Переглянути</a> </td>
-            <td>
-                <a class="ui-button text-primary-emphasis" th:href="@{/edit-employee(id=${employee.employeeId})}">Редагувати</a>
-                <a class="ui-button text-danger-emphasis" th:href="@{/delete-employee(id=${employee.employeeId})}">Видалити</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 
+<div class="container">
+    <div class="row" style="width: 100rem;">
+        <div class="card-group" style="width: 22rem; height: auto" th:each="employee: ${employees}"
+             th:if="${employee != null}">
+            <div class="card row">
+                <div class="card-body text-lg-left">
+                    <ul class="list-group list-group-flush">
+                        <h5 class="card-title" th:text="${employee.lastName + ' '
+                        + employee.firstName + ' '
+                        + employee.patronymic}"></h5>
+                        <li class="list-group-item">
+                            <b class="fw-semibold">ІПН:</b>
+                            <a th:text="${employee.idNumOfTaxpayer}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Дата народження:</b>
+                            <a th:text="${employee.birthday}"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Стать:</b>
+                            <a th:text="${employee.isMale}==1?'Чоловік':'Жінка'"></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Діти:</b>
+                            <a th:href="@{/get-child-list(parentId=${employee.employeeId})}">Переглянути</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Прийняття</b>
+                            <a >Переглянути</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Переведення:</b>
+                            <a th:href="@{/employee-transfer-list(employeeId=${employee.employeeId})}">Переглянути</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b class="fw-medium">Звільнення:</b>
+                            <a>Переглянути</a>
+                        </li>
+
+                        <br/>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <a class="ui-button text-primary-emphasis" th:href="@{/edit-employee(id=${employee.employeeId})}">Редагувати</a>
+                            <a class="ui-button text-danger-emphasis" th:href="@{/delete-employee(id=${employee.employeeId})}">Видалити</a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -6,7 +6,10 @@ import com.blago.hranalytics.services.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
@@ -58,8 +61,8 @@ public class HiringTransferController {
     }
 
     @PostMapping("/delete-transfer")
-    ModelAndView deleteTransfer(@RequestParam Integer id){
-        if(hiringService.isPreviousHiring(id)){
+    ModelAndView deleteTransfer(@RequestParam Integer id) {
+        if (hiringService.isPreviousHiring(id)) {
             return new ModelAndView("transfer/error-deleting");
         }
         hiringService.deleteById(id);
@@ -67,7 +70,7 @@ public class HiringTransferController {
     }
 
     @GetMapping("/edit-transfer")
-    ModelAndView getEditTransferForm(@RequestParam Integer hiringId){
+    ModelAndView getEditTransferForm(@RequestParam Integer hiringId) {
         if (hiringService.getHiringById(hiringId).isPresent()) {
             ModelAndView modelAndView = new ModelAndView("hiring/edit-form")
                     .addObject("hiring", hiringService.getHiringById(hiringId).get());
@@ -78,12 +81,22 @@ public class HiringTransferController {
     }
 
     @PostMapping("/update-transfer")
-    String updateHiring(@ModelAttribute Hiring hiring){
-        if (hiringService.exists(hiring)){
+    String updateHiring(@ModelAttribute Hiring hiring) {
+        if (hiringService.exists(hiring)) {
             hiringService.update(hiring);
             return "redirect:/edit-transfer?hiringId=" + hiring.getHiringId();
         }
         return "transfer/search-error";
+    }
+
+    @GetMapping("/employee-transfer-list")
+    ModelAndView getEmployeeTransfers(@RequestParam Integer employeeId) {
+        if (hiringService.existByEmployeeId(employeeId)) {
+            return new ModelAndView("transfer/employee-transfers")
+                    .addObject("hiringList", hiringService.getTransfersDTOByEmployeeId(employeeId));
+        }
+        return new ModelAndView("transfer/empty-transfer-list")
+                .addObject("employee", employeeService.getById(employeeId).get());
     }
 
     private ModelAndView getFilledHiring(ModelAndView modelAndView) {
